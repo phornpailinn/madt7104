@@ -9,10 +9,54 @@ Original file is located at
 
 import streamlit as st
 import random
-
+import pandas as pd
+st.set_page_config(layout = "wide")
 st.title('Test Streamlit <3')
-st.write('Hello World!')
 
-if st.button('Generate Random Number'):
-    random_number = random.randint(1, 100)
-    st.write(f'Random Number: {random_number}')
+col1_1, col1_2 = st.columns(2)
+with col1_1:
+    st.header("A")
+with col1_2:
+    st.header("B")
+
+col2_1, col2_2 = st.columns([3, 1], border=True)
+col2_1.header("c")
+col2_2.header("D")
+
+with st.container():
+    st.write("MMM")
+container = st.container(border=True)
+container.write("NNN")
+
+col1,col2 = st.columns([0.3,0.7], border=True)
+with col1.container():
+    st.write("container 1 @ column 1")
+
+cc2 =col2.container(height=150)
+cc2.write("container 2 @ column 2")
+
+con1 = st.container()
+for col in con1.columns([1,2,3,4],border=True):
+    col.write("hello world")
+
+con2 = st.container(height=100)
+cc2_1 , cc2_2 , cc2_3 = con2.columns(3)
+cc2_1.write("column 5 @ container 2")
+cc2_2.write("column 6 @ container 2")
+cc2_3.write("column 7 @ container 2")
+
+st.sidebar.title('Filter')
+st.sidebar.header('Option')
+st.sidebar.selectbox(
+    "Pls select !",
+    ('opt1','opt2','opt3','opt4')
+)
+
+df = pd.DataFrame(
+    {
+        "first col": [1,2,3,4],
+        "second col": [10,20,30,40]
+    }
+)
+st.write(df)
+
