@@ -60,3 +60,14 @@ df = pd.DataFrame(
 )
 st.write(df)
 
+username = st.text_input(
+    "Username: ",
+    value="12345"
+    )
+password = st.text_input(
+    "Password: ",
+    type="password",
+    placeholder="pls give password"
+    )
+st.write(username,password)
+
